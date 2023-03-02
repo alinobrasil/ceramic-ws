@@ -1,0 +1,8 @@
+type poolTest @createModel(
+    accountRelation: LIST   , 
+    description: "Pool Test Model") {
+        poolAddress: String! @string(minLength: 3, maxLength: 50),
+        personKey: String! @string(minLength: 3, maxLength: 50)
+}
+
+# modelID: kjzl6hvfrbw6c8qpye2j6fkajzhpaj5lqfsivc6wxymgxni088yhvojbbiji7g7

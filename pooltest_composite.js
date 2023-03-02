@@ -1,0 +1,2 @@
+// This is an auto-generated file, do not edit manually
+export const definition = {"models":{"poolTest":{"id":"kjzl6hvfrbw6c8qpye2j6fkajzhpaj5lqfsivc6wxymgxni088yhvojbbiji7g7","accountRelation":{"type":"list"}}},"objects":{"poolTest":{"personKey":{"type":"string","required":true},"poolAddress":{"type":"string","required":true}}},"enums":{},"accountData":{"poolTestList":{"type":"connection","name":"poolTest"}}}

@@ -17,11 +17,43 @@ const Home: NextPage = () => {
   const [posts, setPosts] = useState<PostProps[] | []>([])
 
 
-  const createPool = async () => {
+  const readPool = async () => {
     const poolData = await composeClient.executeQuery(`
-
+    query {
+      viewer {
+        PoolParticipantInfo {
+          poolAddress
+          personKey
+          isBorrower
+        }
+      }
+    }
     `)
 
+    console.log(poolData)
+  }
+
+  const writePool = async () => {
+    await composeClient.executeQuery(`
+        mutation {
+          createPost(input: {
+            content: {
+              poolAddress: """0x098291032"""
+              personKey: "0x123"
+              isBorrower: true
+              needRecovery: false 
+            }
+          })
+          {
+            document {
+              poolAddress
+              personKey
+              isBorrower
+              needRecovery
+            }
+          }
+        }
+      `)
   }
 
   const createPost = async () => {
@@ -35,21 +67,25 @@ const Home: NextPage = () => {
           }
         }
       `)
+
+      console.log("profile");
+      console.log(profile)
+
       const post = await composeClient.executeQuery(`
-        mutation {
-          createPosts(input: {
-            content: {
-              body: """${newPost}"""
-              created: "${new Date().toISOString()}"
-              profileId: "${profile.data.viewer.basicProfile.id}"
-            }
-          })
-          {
-            document {
-              body
-            }
+      mutation {
+        createPosts(input: {
+          content: {
+            body: """${newPost}"""
+            created: "${new Date().toISOString()}"
+            profileId: "${profile.data.viewer.basicProfile.id}"
+          }
+        })
+        {
+          document {
+            body
           }
         }
+      }
       `)
       getPosts()
       setNewPost('')
@@ -178,11 +214,11 @@ const Home: NextPage = () => {
 
 
         <div className={styles.ak}>
-          <button>
-            create pool data
+          <button onClick={() => { writePool() }}>
+            write pool data
           </button>
 
-          <button>
+          <button onClick={() => { readPool() }} >
             read pool info
           </button>
 
