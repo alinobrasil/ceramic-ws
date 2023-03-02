@@ -25,7 +25,7 @@
   "node": {},
   "state-store": {
     "mode": "fs",
-    "local-directory": "~/.ceramic/statestore/"
+    "local-directory": ".ceramic/statestore/"
   },
   "indexing": {
     "db": "sqlite:.ceramic/indexing.sqlite",

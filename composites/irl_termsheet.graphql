@@ -1,0 +1,15 @@
+type TermSheet @createModel(
+    accountRelation: LIST, 
+    description: "IRL-Trust Term Sheet for borrowing/lending") {
+        TermsDescription: String! @string(minLength: 3, maxLength: 500)
+        AmountUSDC: String! @string(minLength: 3, maxLength: 100)
+        LoanPaidOutTo: String! @string(minLength: 3, maxLength: 100)
+        LoanStartDate: String! @string(minLength: 3, maxLength: 10)
+        LoanEndDate: String! @string(minLength: 3, maxLength: 10)
+        APR: String! @string(minLength: 3, maxLength: 10)
+        RepaymentStartDate: String! @string(minLength: 3, maxLength: 10)
+        RepaymentEndDate: String! @string(minLength: 3, maxLength: 100)
+        DefaultDays: Int! @int(min: 1, max: 100000)
+        URL: String! @string(minLength: 3, maxLength: 500)
+}
+

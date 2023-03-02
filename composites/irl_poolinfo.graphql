@@ -1,5 +1,5 @@
 type PoolParticipantInfo @createModel(
-    accountRelation: SINGLE, 
+    accountRelation: List, 
     description: "Pool Participant Information") {
   poolAddress: String! @string(minLength: 3, maxLength: 50),
   personKey: String! @string(minLength: 3, maxLength: 50),

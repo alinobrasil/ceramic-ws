@@ -16,7 +16,6 @@ const Home: NextPage = () => {
   const [newPost, setNewPost] = useState('')
   const [posts, setPosts] = useState<PostProps[] | []>([])
 
-
   const readPool = async () => {
     const poolData = await composeClient.executeQuery(`
     query {
@@ -34,12 +33,31 @@ const Home: NextPage = () => {
   }
 
   const writePool = async () => {
-    await composeClient.executeQuery(`
+    console.log("writing sample pool data")
+    await composeClient.executeQuery(
+      // `
+      // mutation {
+      //   createpoolTest(input:{
+      //     content:{
+      //       poolAddress: "0xPoolAddress"
+      //       personKey: "0xPersonAddress"
+      //     }
+      //   })
+      //   {
+      //     document{
+      //       personKey
+      //       poolAddress
+      //     }
+      //   }
+      // }
+      // `
+
+      `
         mutation {
           createPost(input: {
             content: {
-              poolAddress: """0x098291032"""
-              personKey: "0x123"
+              poolAddress: "0xthepooladdress38373"
+              personKey: "0xPersonyo"
               isBorrower: true
               needRecovery: false 
             }
@@ -53,7 +71,10 @@ const Home: NextPage = () => {
             }
           }
         }
-      `)
+      `
+
+
+    )
   }
 
   const createPost = async () => {
